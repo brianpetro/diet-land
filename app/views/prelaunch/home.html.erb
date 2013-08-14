@@ -1,2 +1,11 @@
-<h1>Prelaunch#home</h1>
-<p>Find me in app/views/prelaunch/home.html.erb</p>
+<div class="jumbotron">
+  <h1>Love the Diet</h1>
+  <h1>Lose the Fat</h1>
+  <p>Members Get A Copy For $0.99, 2 Days Only! Regularly $12.99. <em>Coming September 2013!</em></p>
+  <%= form_for("subscribe", url: "/subscribe", html: {class: "form-inline"}) do |f| %>
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <%= f.submit "Join!", {value: "Join!", class: "btn"} %>
+  <% end %>
+</div>
