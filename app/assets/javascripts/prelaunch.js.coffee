@@ -1,3 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ -> #run when the DOM is ready
+  $(".btn").click -> #use a class, since your ID gets mangled
+    $(this).addClass "disabled" #add the class to the clicked element
