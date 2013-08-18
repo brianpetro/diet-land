@@ -1,19 +1,26 @@
 <div class="jumbotron">
   <h1>Love the Diet</h1>
   <h1>Lose the Fat</h1>
-  <p>Members Get A Copy For <span style="color:green;">$1</span>, Two(2) Days Only! Regularly $12.99. <em>Coming September 2013!</em></p>
-  <% if notice %>
-    <p><%= notice %></p>
-    <p><strong>Please check your email to confirm your membership.</strong> Catherine will send you a message when <em>Love the Diet Lose the Fat</em> is available for a limited time at $1.</p>
-  <% else %>
-    <%= form_for("subscribe", url: "/subscribe", html: {class: "form-inline"}) do |f| %>
-      <div class="form-group">
-        <%= f.text_field :email, class: "form-control", placeholder: "you@example.com" %>
-      </div>
-      <%= f.submit "Join!", {value: "Join!", class: "btn btn-primary"} %>
-      <% if alert %>
-        <p style="color:red;"><%= alert %></p>
-      <% end %>
+  <p>Members Get A Copy For <span style="color:green;">$1</span>, Two(2) Days Only! Regularly <strong>$12.99</strong>. <em>Coming September 2013!</em></p>
+  <%= form_for("subscribe", url: "/subscribe", html: {class: "form-inline"}) do |f| %>
+    <% unless @email.present? %>
+    <a href='/auth/facebook' class="btn btn-primary">Connect with Facebook</a>
+    <label> or enter your email</label>
     <% end %>
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control", placeholder: "you@example.com", value: @email %>
+    </div>
+    <%= f.submit @button, {value: @button, class: "btn btn-primary"} %>
+    <% if alert %>
+      <p style="color:red;"><%= alert %></p>
+    <% end %>
+  <% end %>
+  <% if @email.present? %>
+    <p>Is this the correct email?</p>
+    <div class="alert alert-success">
+      <p><strong>Make sure you check your inbox to confirm your membership.</strong> Catherine will send you a message when <em>Love the Diet Lose the Fat</em> is available for a limited time at $1.</p>
+    </div>
+  <% else %>
+
   <% end %>
 </div>

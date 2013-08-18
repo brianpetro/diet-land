@@ -1,7 +1,7 @@
 DietLand::Application.routes.draw do
   root 'prelaunch#home'
   post "subscribe", to: "prelaunch#subscribe"
-  get 'auth/facebook/callback', to: 'prelaunch#facebook'
+  get 'auth/facebook/callback', to: 'prelaunch#subscribe'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
