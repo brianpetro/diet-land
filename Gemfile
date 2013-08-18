@@ -39,3 +39,5 @@ end
 
 # Mailchimp
 gem 'mailchimp'
+
+gem 'omniauth-facebook'
