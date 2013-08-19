@@ -1,26 +1,48 @@
-<div class="jumbotron">
-  <h1>Love the Diet</h1>
-  <h1>Lose the Fat</h1>
-  <p>Members Get A Copy For <span style="color:green;">$1</span>, Two(2) Days Only! Regularly <strong>$12.99</strong>. <em>Coming September 2013!</em></p>
-  <%= form_for("subscribe", url: "/subscribe", html: {class: "form-inline"}) do |f| %>
-    <% unless @email.present? %>
-    <a href='/auth/facebook' class="btn btn-primary">Connect with Facebook</a>
-    <label> or enter your email</label>
-    <% end %>
-    <div class="form-group">
-      <%= f.text_field :email, class: "form-control", placeholder: "you@example.com", value: @email %>
-    </div>
-    <%= f.submit @button, {value: @button, class: "btn btn-primary"} %>
-    <% if alert %>
-      <p style="color:red;"><%= alert %></p>
-    <% end %>
-  <% end %>
-  <% if @email.present? %>
-    <p>Is this the correct email?</p>
-    <div class="alert alert-success">
-      <p><strong>Make sure you check your inbox to confirm your membership.</strong> Catherine will send you a message when <em>Love the Diet Lose the Fat</em> is available for a limited time at $1.</p>
-    </div>
-  <% else %>
+<div class="row jumbotron">
 
-  <% end %>
+  <div class="col-lg-10 col-md-10 col-sm-6">
+    <h1>Love the Diet<br>Lose the Fat</h1>
+    <p>Members Get A Copy For <span style="color:green;">$1</span>, Two(2) Days Only! Regularly <strong>$12.99</strong>. <em>Coming September 2013!</em></p>
+    <%= form_for("subscribe", url: "/subscribe", html: {class: "form-inline"}) do |f| %>
+
+      <div class="hidden-xs">
+        <% unless @email.present? %>
+          <a href='/auth/facebook' class="btn btn-primary">Connect with Facebook</a>
+          <label> or enter your email</label>
+        <% end %>
+        <div class="form-group">
+          <%= f.text_field :email, class: "form-control", placeholder: "you@example.com", value: @email %>
+        </div>
+        <%= f.submit @button, {value: @button, class: "btn btn-primary"} %>
+      </div>
+
+      <div class="visible-xs">
+        <% unless @email.present? %>
+          <a href='/auth/facebook' class="btn btn-block btn-primary">Connect with Facebook</a>
+          <label class="col-xs-12" style="text-align:center"> or enter your email</label>
+        <% end %>
+        <div class="form-group col-xs-9">
+          <%= f.text_field :email, class: "form-control", placeholder: "you@example.com", value: @email %>
+        </div>
+        <%= f.submit @button, {value: @button, class: "btn btn-primary col-xs-3"} %>
+      </div>
+
+      <% if alert %>
+        <p style="color:red;"><%= alert %></p>
+      <% end %>
+    <% end %>
+    <% if @email.present? %>
+      <p>Is this the correct email?</p>
+      <div class="alert alert-success">
+        <p><strong>Make sure you check your inbox to confirm your membership.</strong> Catherine will send you a message when <em>Love the Diet Lose the Fat</em> is available for a limited time at $1.</p>
+      </div>
+    <% else %>
+
+    <% end %>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-6">
+    <img src="/Love-the-Diet-Cover.png" class="img-responsive" alt="Love the Diet Lose the Fat Cover" />
+  </div>
+
+
 </div>
